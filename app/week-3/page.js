@@ -76,10 +76,9 @@ export default function Page() {
   ];
 
   return (
-    <div>
-      <h1>Week 3</h1>
-      <h2>Item List</h2>
+    <main className="bg-violet-900 mx-auto p-2 ">
+      <h1 className="text-white text-3xl font-bold">Shopping List</h1>
       <ItemList items={items} />
-    </div>
+    </main>
   );
 }
