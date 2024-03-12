@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Item from "./item";
 
-function ItemList({ items }) {
+function ItemList({ items, onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
 
   const sortedItems = [...items].sort((a, b) => {
@@ -35,7 +35,7 @@ function ItemList({ items }) {
         <button
           onClick={() => setSortBy("name")}
           className={`${
-            sortBy === "name" ? "bg-sky-500 font-bold" : "bg-sky-700"
+            sortBy === "name" ? "bg-orange-500 font-bold" : "bg-orange-700"
           } border rounded p-1 px-3`}
         >
           Name
@@ -43,7 +43,7 @@ function ItemList({ items }) {
         <button
           onClick={() => setSortBy("category")}
           className={`${
-            sortBy === "category" ? "bg-sky-500 font-bold" : "bg-sky-700"
+            sortBy === "category" ? "bg-orange-500 font-bold" : "bg-orange-700"
           } border rounded p-1 px-3`}
         >
           Category
@@ -52,7 +52,7 @@ function ItemList({ items }) {
         <button
           onClick={() => setSortBy("groupedCategory")}
           className={`${
-            sortBy === "groupedCategory" ? "bg-sky-500 font-bold" : "bg-sky-700"
+            sortBy === "groupedCategory" ? "bg-orange-500 font-bold" : "bg-orange-700"
           } border rounded p-1 px-3`}
         >
           Grouped Category
@@ -67,7 +67,7 @@ function ItemList({ items }) {
                 <ul>
                   {items.map((item, index) => (
                     <li key={index}>
-                      <Item key={index} {...item}></Item>
+                      <Item key={index} {...item} onSelect={onItemSelect}></Item>
                     </li>
                   ))}
                 </ul>
@@ -75,7 +75,7 @@ function ItemList({ items }) {
             ))
           : sortedItems.map((item, index) => (
               <li key={index}>
-                <Item key={index} {...item}></Item>
+                <Item key={index} {...item} onSelect={onItemSelect}></Item>
               </li>
             ))}
       </ul>
